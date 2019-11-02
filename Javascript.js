@@ -11,7 +11,7 @@ $("#search").on('click', function () {
         url: weatherURL,
         method: "GET"
 
-        
+
     }).then(function (response) {
         var UVURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&units=imperial&APPID=" + apiKey;
 
@@ -23,7 +23,7 @@ $("#search").on('click', function () {
             var lat = data.coord.lat
             console.log(lat, lon)
 
-            
+
 
             // // Call the weather API  - UV
 
@@ -36,54 +36,52 @@ $("#search").on('click', function () {
                 url: uvURL,
                 method: "GET"
             }).then(function (UVresponse) {
-                console.log(UVresponse)
-
-                console.log(response);
-                console.log(uvURL);
-
+             console.log("uv")
 
 
                 var temperature = response.list[0].main.temp
-        var humidity = response.list[0].main.humidity
-        var windspeed = response.list[0].wind.speed
-        var rain = response.list[0].rain["3h"]
-        var UVindex = response.list[0].value
+                var humidity = response.list[0].main.humidity
+                var windspeed = response.list[0].wind.speed
+                // var rain = response.list[0].rain["3h"]
+                var UVindex = UVresponse[0].value
+                console.log("debug", UVresponse)
 
-        $(".currenttemp").text(temperature)
-        $(".currenthum").text(humidity)
-        $(".currentwind").text(windspeed)
-        $(".currentUV").text(formattedRainPercentage)
 
-        for (var i = 0; i < response.list.length; i++) {
-            var time = response.list[i].dt_txt.split(" ")[1]
-            if (time === "12:00:00") {
+                $(".currenttemp").text(temperature)
+                $(".currenthum").text(humidity)
+                $(".currentwind").text(windspeed)
+                $(".currentUV").text(UVindex)
 
-                console.log(response.list[i])
-                MakDayCard(response.list[i])
-            }
-        }
-        
-        function MakDayCard(day) {
+                for (var i = 0; i < response.list.length; i++) {
+                    var time = response.list[i].dt_txt.split(" ")[1]
+                    if (time === "12:00:00") {
 
-            var colDiv = $("<div>").addClass("col-2")
-            var card = $("<div>").addClass("card")
-            var cardBody = $("<div>").addClass("card-body")
-            var date = $("<h5>").addClass("card-title date").text("Date: ")
-            var dateSpan = $("<span>").text(day.dt_txt)
-            date.append(dateSpan);
-            var icon = $("<p>").addClass("icon");
-            var forecast = $("<p>").addClass("forecasttemp").text("Temperature: ")
-            var tempSpan = $("<span>").text(day.main.temp)
-            forecast.append(tempSpan)
-            var humidity = $("<p>").addClass("forecasthum").text("Humidity: ")
-            var humditySPan = $("<span>").text(day.main.humidity)
-            humidity.append(humditySPan)
-            cardBody.append(date, icon, forecast, humidity);
-            card.append(cardBody)
-            colDiv.append(card)
-        
-            $("#5dayForecast").append(colDiv)
-        };
+                        console.log(response.list[i])
+                        MakDayCard(response.list[i])
+                    }
+                }
+
+                function MakDayCard(day) {
+
+                    var colDiv = $("<div>").addClass("col-2")
+                    var card = $("<div>").addClass("card")
+                    var cardBody = $("<div>").addClass("card-body")
+                    var date = $("<h5>").addClass("card-title date").text("Date: ")
+                    var dateSpan = $("<span>").text(day.dt_txt)
+                    date.append(dateSpan);
+                    var icon = $("<p>").addClass("icon");
+                    var forecast = $("<p>").addClass("forecasttemp").text("Temperature: ")
+                    var tempSpan = $("<span>").text(day.main.temp)
+                    forecast.append(tempSpan)
+                    var humidity = $("<p>").addClass("forecasthum").text("Humidity: ")
+                    var humditySPan = $("<span>").text(day.main.humidity)
+                    humidity.append(humditySPan)
+                    cardBody.append(date, icon, forecast, humidity);
+                    card.append(cardBody)
+                    colDiv.append(card)
+
+                    $("#5dayForecast").append(colDiv)
+                };
             });
 
         });
@@ -110,31 +108,31 @@ $("#search").on('click', function () {
         console.log(response);
         console.log(weatherURL);
 
-        
+
     });
 });
 
-function MakDayCard(day) {
+// function MakDayCard(day) {
 
-    var colDiv = $("<div>").addClass("col-2")
-    var card = $("<div>").addClass("card")
-    var cardBody = $("<div>").addClass("card-body")
-    var date = $("<h5>").addClass("card-title date").text("Date: ")
-    var dateSpan = $("<span>").text(day.dt_txt)
-    date.append(dateSpan);
-    var icon = $("<p>").addClass("icon");
-    var forecast = $("<p>").addClass("forecasttemp").text("Temperature: ")
-    var tempSpan = $("<span>").text(day.main.temp)
-    forecast.append(tempSpan)
-    var humidity = $("<p>").addClass("forecasthum").text("Humidity: ")
-    var humditySPan = $("<span>").text(day.main.humidity)
-    humidity.append(humditySPan)
-    cardBody.append(date, icon, forecast, humidity);
-    card.append(cardBody)
-    colDiv.append(card)
+//     var colDiv = $("<div>").addClass("col-2")
+//     var card = $("<div>").addClass("card")
+//     var cardBody = $("<div>").addClass("card-body") 
+//     var date = $("<h5>").addClass("card-title date").text("Date: ")
+//     var dateSpan = $("<span>").text(day.dt_txt)
+//     date.append(dateSpan);
+//     var icon = $("<p>").addClass("icon");
+//     var forecast = $("<p>").addClass("forecasttemp").text("Temperature: ")
+//     var tempSpan = $("<span>").text(day.main.temp)
+//     forecast.append(tempSpan)
+//     var humidity = $("<p>").addClass("forecasthum").text("Humidity: ")
+//     var humditySPan = $("<span>").text(day.main.humidity)
+//     humidity.append(humditySPan)
+//     cardBody.append(date, icon, forecast, humidity);
+//     card.append(cardBody)
+//     colDiv.append(card)
 
-    $("#5dayForecast").append(colDiv)
-};
+//     $("#5dayForecast").append(colDiv)
+// };
 
 
 
@@ -145,11 +143,11 @@ function MakDayCard(day) {
 //     var currentCity = $('<li>').text(city);
 //     currentCity.attr({ type: 'button', class: 'storeCity', name: city });
 //     $('#cities').append(currentCity);
-    
+
 //     var citydata = JSON.parse(localStorage.getItem())
-    
-    
+
+
 //     localStorage.setItem('city',JSON.stringify (city);
 //     console.log("city")
-    
+
 //     });
