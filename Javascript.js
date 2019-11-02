@@ -4,6 +4,27 @@ $("#search").on('click', function () {
     $("#5dayForecast").empty();
     event.preventDefault();
 
+    var cityData = JSON.parse(localStorage.getItem("city"))
+
+    var input = $("#cityInput").val();
+    localStorage.setItem('city', JSON.stringify(input));
+    console.log(input);
+
+    var list = ("#myList");
+    
+
+    var newL = $("<li>");
+
+    newL.text(input);
+
+    newL.appendTo(list);
+
+    newL.on("click", function(){
+
+var newl2 = $(this).text();        
+
+    });
+    
     var cityInput = $("#cityInput").val();
     var weatherURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&units=imperial&APPID=" + apiKey;
     // Call the weather API  - Forecast
@@ -36,7 +57,7 @@ $("#search").on('click', function () {
                 url: uvURL,
                 method: "GET"
             }).then(function (UVresponse) {
-             console.log("uv")
+                console.log("uv")
 
 
                 var temperature = response.list[0].main.temp
@@ -135,7 +156,11 @@ $("#search").on('click', function () {
 // };
 
 
+// var cityData = JSON.parse(localStorage.getItem("city"))
 
+// var input = $("#cityInput").val();
+// localStorage.setItem('city',JSON.stringify (input));
+// // console.log(input);
 
 
 // // city history to local storage.
@@ -144,10 +169,8 @@ $("#search").on('click', function () {
 //     currentCity.attr({ type: 'button', class: 'storeCity', name: city });
 //     $('#cities').append(currentCity);
 
-//     var citydata = JSON.parse(localStorage.getItem())
 
 
-//     localStorage.setItem('city',JSON.stringify (city);
-//     console.log("city")
+
 
 //     });
