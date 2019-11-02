@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Weather Dashboard</title>
+</head>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Weather Dashboard</a>
+
+</nav>
+
+<body>
+    <div class="container">
+
+        <!-- Nav Bar -->
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">Weather Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="City" aria-label="Search"
+                        id="cityInput">
+                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search">Get Weather</button>
+                </form>
+
+            </div>
+        </nav>
+        <!-- Current Weather -->
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h5 class="card-title">Current Weather</h5>
+
+                        <p>Temperature: <span class="currenttemp"></span></p>
+                        <p>Humidity: <span class="currenthum"></span></p>
+                        <p>Wind Speed: <span class="currentwind"></span></p>
+                        <p>UV Index: <span class="currentUV"></span></p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row"></div>
+
+        <!-- Search History - Fill Dynamically -->
+        <div class="row" id="5dayForecast">
+            <div class=".col-md-3 no-float">
+                <nav class="flex-column">
+                    <!-- Search History -->
+                    <p id="cities"></p>
+
+
+                </nav>
+            </div>
+
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h5 class="card-title date"> Date: </h5>
+
+                        <p class="icon"></p>
+                        <p class="forecasttemp">Temperature : </p>
+                        <p class="forecasthum">Humidity: </p>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+    </div>
+    <!-- Bootstrap Scripts -->
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="./moment.js"></script>
+    <script src="Javascript.js"></script>
+</body>
+
+</html>
